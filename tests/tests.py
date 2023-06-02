@@ -1,5 +1,5 @@
 from __future__ import annotations
-import interfaced
+import __init__ as interfaced
 from typing import Self
 passed = 0
 

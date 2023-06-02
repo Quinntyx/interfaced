@@ -11,6 +11,17 @@ def get_defining_class (cls : type, methodname : str) :
 def get_non_dunder_attrs (cls : type) :
     return [getattr(cls, i) for i in dir(cls) if not is_dunder(i)]
 
+def bases (cls : type, parent : type) :
+    """
+    Checks whether or not a particular class is a subclass of a particular parent. 
+    
+    Bypasses isinstance and issubclass checks, meaning it works in a traditional way on
+    interfaces.
+
+    Equivalent to the ClassSignature method. 
+    """
+    return ClassSignature(cls).bases(parent)
+
 
 class PropertySignature :
     def __init__ (self, target : property) :
@@ -121,9 +132,11 @@ class Interface (type) :
         return type.__new__(cls, name, bases, dct)
 
     def __instancecheck__ (cls, instance) :
+        if len(cls.__bases__) != 1 : return super(cls).__instancecheck__(instance)
         return cls.__subclasscheck__(type(instance))
 
     def __subclasscheck__ (cls, subclass) :
+        if len(cls.__bases__) != 1 : return super(cls).__subclasscheck__(subclass)
         return ClassSignature(subclass).implements(cls)
     
 

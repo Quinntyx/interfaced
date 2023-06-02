@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "interfaced"
+version = "0.0.1"
+authors = [
+    { name = "Quinntyx", email = "harrisonhenry916@gmail.com" },
+]
+description = "A package that provides an Interface implementation with alternative, more flexible semantics as compared to ABC. "
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)",
+    "Operating System :: OS Independent"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Quinntyx/interfaced"
+"Bug Tracker" = "https://github.com/Quinntyx/interfaced/issues"
