@@ -82,4 +82,24 @@ class. However, even if an interface is improperly implemented, inheriting will 
 methods of that interface. 
 - It is important to remember that subclassing an interface *does not* mean `isinstance(yourclass, Interface)` 
 will return true. You cannot use this with logic that checks subclassing the way it is traditionally applied. 
-To access traditional python basing behavior, see `interfaced#bases`. 
+To access traditional python basing behavior on a , see `interfaced#bases`. 
+- For defaults to work propertly, all other decorators must follow it. 
+
+
+## On Naming
+Interfaces are python classes, so they follow Python class naming guidelines. However, as special classes, they
+should be named to indicate their state, and represent that they should not be initialized. 
+
+Therefore, I propose that in addition to PEP when naming interfaces they should be named in one of two ways, with
+one vastly preferred over the other. 
+
+1. Interfaces should be defined as adjectives, like JSONSerializable. 
+2. In cases where this isn't possible or doesn't make sense, the class name should end in Interface, like 
+TestInterface did in the examples. 
+
+These naming conventions aren't something I can enforce, but seeing as this is something that behaves different
+semantically from the rest of python, I felt some conventions should exist. 
+
+## Disclaimer
+This project is currently still in early stages and should not be used in production code until at least release
+1.0.0. Until 1.0.0, there may also be breaking changes in semantics. 
